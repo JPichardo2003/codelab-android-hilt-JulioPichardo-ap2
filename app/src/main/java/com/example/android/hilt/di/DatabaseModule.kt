@@ -7,7 +7,6 @@ import com.example.android.hilt.data.LogDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.internal.managers.ApplicationComponentManager
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
@@ -25,6 +24,9 @@ object DatabaseModule {
             "logging.db"
         ).build()
     }
+
     @Provides
-    fun provideLogDao(database: AppDatabase): LogDao = database.logDao()
+    fun provideLogDao(database: AppDatabase): LogDao {
+        return database.logDao()
+    }
 }
